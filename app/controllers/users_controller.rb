@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
-      redirect_to profile_path
+      rrender 'pages/home'
     else
-      render 'edit'
+      render 'pages/home'
     end
   end
 
