@@ -1,18 +1,12 @@
-class PlantsController < ApplicationController
+
   class PlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
 
   def index
     @plants = Plant.all
-
+    render 'pages/home'
     # see plant policy -scope
-    @search = params["search"]
-    if @search.present?
-      @plants = Plant.where("address ILIKE ?", "%#{@search[:query]}%")
-    else
-      @plants = policy_scope(Plant)
-    end
   end
 
   def show
@@ -30,7 +24,7 @@ class PlantsController < ApplicationController
     if @plant.save
       redirect_to plant_path(@plant), notice: 'Plant was saved'
     else
-      render :new
+      render 'pages/home'
     end
   end
 
@@ -45,7 +39,7 @@ class PlantsController < ApplicationController
       @plant.save
       redirect_to @plant, notice: 'Plant was updated'
     else
-      render :edit
+      render 'pages/home'
     end
   end
 
@@ -53,18 +47,17 @@ class PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
 
     @plant.destroy
-    redirect_to plants_url, notice: 'Plant was removed'
+    render 'pages/home'
   end
 
   private
 
   def set_plant
     @plant = Plant.find(params[:id])
-
   end
 
   def plant_params
     params.require(:plant).permit(:name, :description, :price,
-                                  :care_instructions, :user_id, :photo, :photo_cache, :address, :search, :avail_from, :avail_to)
+                                  :care_instructions, :user_id, :address)
   end
 end
