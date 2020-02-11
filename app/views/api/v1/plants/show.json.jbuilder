@@ -1,1 +1,1 @@
-json.extract! @plant, :id, :name, :description, :user_id
+json.extract! @plant, :id, :name, :description, :photo, :user_id

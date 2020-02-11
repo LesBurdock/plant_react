@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
-      rrender 'pages/home'
+      render 'pages/home'
     else
       render 'pages/home'
     end
