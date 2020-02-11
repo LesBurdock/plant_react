@@ -9,7 +9,6 @@ function PlantDisplay(props) {
     axios
       .get("http://localhost:3000/api/v1/plants/")
       .then(result => {
-        console.log(result);
         setPlants(result.data);
       })
       .catch(err => {
@@ -21,7 +20,6 @@ function PlantDisplay(props) {
     <div className="plant-cards">
       {plants.map(plant => {
         return (
-        <div className = "grid" >
           <PlantCard
             name={plant.name}
             description={plant.description}
@@ -29,7 +27,6 @@ function PlantDisplay(props) {
             key={plant.id}
             image={plant.photo}
           />
-          </div>
           );
       })}
     </div>
