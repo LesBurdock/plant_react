@@ -1,26 +1,30 @@
 import React from "react";
-import {
-    Card,
-    CardImg,
-    CardTitle,
-    CardBody,
-    Button,
-    CardSubtitle
-} from "reactstrap";
+
 // import "../index.css";
 // import { Container } from "reactstrap";
 
 
 export default function PlantCard(props) {
-  const plantItem = props.find(item => item.id === (props.match.params.dataId))
+  if (!props.plantList){
     return (
-      <div className ="grid" key = {props.id}>
-        <Card key={props.id} className="card">
-          <CardImg src={props.photo} alt="main" className="plantImg" />
-          <CardTitle>{props.name}</CardTitle>
-          <CardTitle>{props.description}</CardTitle>
-          <CardSubtitle>{props.price}</CardSubtitle>
-        </Card>
+      <div>
+        <h1>loading...</h1>
+      </div>
+      );
+  } else {
+  const specificPlant = props.plantList.find(plant => plant.id === Number(props.match.params.id));
+  console.log(specificPlant);
+    return (
+      <div key = {specificPlant.id }>
+        <div key = {specificPlant.id } className="card">
+          <img src={specificPlant.photo} alt="main" className="card-img"/>
+          <div className ="card-info">
+          <h1>{specificPlant.name}</h1>
+          <p>{specificPlant.description}</p>
+          <p>{specificPlant.price}</p>
+          </div>
+        </div>
       </div>
     );
+}
 }

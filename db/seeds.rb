@@ -18,12 +18,12 @@ serg = User.create!(
   email: "serg@fun.com"
   )
 planty = Plant.create!(
-  name: "My Wonderful Cactus",
+  name: "My Wonderful Orchid",
   description:"I know plants can’t slobber me with wet kisses and bark with delight when I return home; plants are not loyal or loving, or fluffy and fun – but they are helping me to learn how to care for something other than myself, so that is probably a good warmup for something more sentient in the distant future.",
   user_id: les.id ,
   care_instructions: "Succulents and cacti are low maintenance, water wise plants that store water in their leaves, stems or roots, creating a plump or succulent appearance. They are often found in hot, arid climates such as the desert and have adapted to tolerate long periods of drought. There are many varieties of succulents and cacti that come from all over the world. For best results each plant has individual needs, but there are general rules for succulent and cactus plant care. ",
   price: 10,
-  photo: 'cactus.jpg'
+  photo: 'https://res.cloudinary.com/dkefcoe8x/image/upload/v1582027782/clau-chases-colors-puP2reKn4iQ-unsplash_u3pfr1.jpg'
   )
 planty2 = Plant.create!(
   name: "My Wonderful Cactus",
@@ -31,7 +31,7 @@ planty2 = Plant.create!(
   user_id: les.id ,
   care_instructions: "Succulents and cacti are low maintenance, water wise plants that store water in their leaves, stems or roots, creating a plump or succulent appearance. They are often found in hot, arid climates such as the desert and have adapted to tolerate long periods of drought. There are many varieties of succulents and cacti that come from all over the world. For best results each plant has individual needs, but there are general rules for succulent and cactus plant care. ",
   price: 10,
-  photo: 'cactus.jpg'
+  photo: 'https://res.cloudinary.com/dkefcoe8x/image/upload/v1582030676/eyjnoiu9chgeeva0e0ej.jpg'
   )
 planty3 = Plant.create!(
   name: "Rubber Plant",
@@ -39,7 +39,7 @@ planty3 = Plant.create!(
   user_id: les.id ,
   care_instructions: "Succulents and cacti are low maintenance, water wise plants that store water in their leaves, stems or roots, creating a plump or succulent appearance. They are often found in hot, arid climates such as the desert and have adapted to tolerate long periods of drought. There are many varieties of succulents and cacti that come from all over the world. For best results each plant has individual needs, but there are general rules for succulent and cactus plant care. ",
   price: 10,
-  photo: 'cactus.jpg'
+  photo: 'https://res.cloudinary.com/dkefcoe8x/image/upload/v1582030676/eyjnoiu9chgeeva0e0ej.jpg'
   )
 cacty = Plant.create!(
   name: "My Sucky Succulent Collection",
@@ -47,7 +47,7 @@ cacty = Plant.create!(
   user_id: serg.id ,
   care_instructions: "Succulents love light and need about six hours of sun per day, depending on the type of succulent. Newly planted succulents can scorch in direct sunlight, so you may need to gradually introduce them to full sun exposure or provide shade with a sheer curtain.",
   price: 10,
-  photo: 'cactus.jpg'
+  photo: 'https://res.cloudinary.com/dkefcoe8x/image/upload/v1582030676/eyjnoiu9chgeeva0e0ej.jpg'
   )
 booky = Booking.create(start_date: Date.new(2020, 1, 1), end_date: Date.new(2020, 1, 2), user_id: serg.id, plant_id: planty.id)
 wooky = Booking.create(start_date: Date.new(2020, 2, 2), end_date: Date.new(2020, 2, 20), user_id: serg.id, plant_id: cacty.id)

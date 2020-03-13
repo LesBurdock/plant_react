@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from "react";
-import PlantCard from "./card.js";
 import axios from "axios";
 
+
 function PlantDisplay(props) {
-  const [plants, setPlants] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/v1/plants/")
-      .then(result => {
-        setPlants(result.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
-
   return (
-    <div className="plant-cards">
-      {plants.map(plant => {
-        return (
-          <PlantCard
-            name={plant.name}
-            description={plant.description}
-            price={plant.price}
-            key={plant.id}
-            image={plant.photo}
-          />
-          );
-      })}
+    <div className="grid">
+      {props.plantList.map(plant => (
+          <div className ="card" key={plant.id} >
+            <img src = {plant.photo} alt="main" className="card-img"/>
+            <div className="card-info">
+            <h3  onClick={() => props.history.push(`/plant-list/${plant.id}`)}>
+            {plant.name}
+            </h3>
+            <p>{plant.description}</p>
+            </div>
+            <p>€ {plant.price} per day</p>
+          </div>
+      ))}
     </div>
   );
 }

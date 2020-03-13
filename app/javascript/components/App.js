@@ -1,16 +1,15 @@
-import React from "react";
+import React,  { useState } from "react";
 import PlantDisplay from "components/plants";
 import Home from "components/home";
-import Card from "components/card";
+import PlantCard from "components/card";
+import useFetchPlants from '../data/plantData';
 import ReactDom from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
-// const Star = ({ selected = false, onClick = f => f }) => (
-//   <div className={selected ? "star selected" : "star"} onClick={onClick} />
-// );
 
 function App() {
+const plants = useFetchPlants();
     return (
       <div>
       <nav className = 'navlinks'>
@@ -20,9 +19,9 @@ function App() {
       </div>
     </nav>
           <Route exact path = "/" component={Home}/>
-          <Route path = "/plant-list" component = { PlantDisplay }/>
-          <Route path= "item-list/:dataID" component={Card}/>
-          </div>
+          <Route exact path = "/plant-list" render = { props => <PlantDisplay {...props} plantList = {plants}/> }/>
+          <Route path = "/plant-list/:id" render = { props => <PlantCard {...props} plantList = {plants} />} />
+           </div>
     );
 }
 
